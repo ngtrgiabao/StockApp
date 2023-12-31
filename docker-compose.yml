@@ -1,0 +1,19 @@
+version: "latest"
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: stock_app_db
+    environment:
+    #environment varibles
+      - ACCEPT_EULA=Y #Accept End-User License Agreement
+      - SA_PASSWORD=123456@
+    ports: #Port mapping from container to host
+      - 1433:1433
+    volumes:
+      - ./db_data:/var/opt/mssql/data
+      # - ./sql_init:/docker-entrypoint-initdb.d #sql_init contains SQL scripts
+    restart: always
+    mem_limit: 2g #Memory limit for the container
+    memswap_limit: 3g
+
+# docker-compose --file ./docker-compose.yml up --detach
