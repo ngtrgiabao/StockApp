@@ -1,4 +1,4 @@
-version: "latest"
+version: "3.9"
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -6,9 +6,9 @@ services:
     environment:
     #environment varibles
       - ACCEPT_EULA=Y #Accept End-User License Agreement
-      - SA_PASSWORD=123456@
+      - SA_PASSWORD=123456
     ports: #Port mapping from container to host
-      - 1433:1433
+      - 1434:1433
     volumes:
       - ./db_data:/var/opt/mssql/data
       # - ./sql_init:/docker-entrypoint-initdb.d #sql_init contains SQL scripts
